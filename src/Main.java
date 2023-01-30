@@ -36,9 +36,6 @@ public class Main {
                     }
 
                 }
-                else {
-                    System.out.println("Thank you for banking with us");
-                }
             }while (selection==1);
 
 
@@ -81,37 +78,57 @@ public class Main {
         }
         if(selection==3) {
             do {
-                System.out.println("How much would you like to withdraw");
-                float withdrawal = input.nextFloat();
-                balance -= withdrawal;
-                System.out.println("You have successfully withdrawn " + withdrawal + ". " + "You available balance is " + (double) Math.round(balance * 100) / 100);
 
-                System.out.println("Do you wish to perform another action, press Y/N");
-                String anotherSelection = input.next();
-                if (anotherSelection.equalsIgnoreCase("Y")) {
+                    System.out.println("How much would you like to withdraw");
+                    float withdrawal = input.nextFloat();
+                if(withdrawal<balance) {
+                    balance -= withdrawal;
+                    System.out.println("You have successfully withdrawn " + withdrawal + ". " + "You available balance is " + (double) Math.round(balance * 100) / 100);
 
-                    try {
-                        anotherSelection= input.nextLine();
-                    } catch (Exception e) {
-                        System.out.println("Invalid input, please enter a valid number.");
-                        input.nextLine(); // discard the invalid input
+                    System.out.println("Do you wish to perform another action, press Y/N");
+                    String anotherSelection = input.next();
+                    if (anotherSelection.equalsIgnoreCase("Y")) {
+
+                        try {
+                            anotherSelection = input.nextLine();
+                        } catch (Exception e) {
+                            System.out.println("Invalid input, please enter a valid number.");
+                            input.nextLine(); // discard the invalid input
+
+                        }
+
+                        System.out.println("Press 1 to check balance, 2 to make a deposit, 3 to withdraw money and 0 to exist the application");
+                        try {
+                            selection = input.nextInt();
+                        } catch (Exception e) {
+                            System.out.println("Invalid input, please enter a valid number.");
+                            input.nextLine(); // discard the invalid input
+
+                        }
 
                     }
+                }if (withdrawal>balance){
+                    System.out.println("You do not have enough in your account to continue");
+                    System.out.println("Do you wish to perform another action, press Y/N");
+                    String anotherSelection = input.next();
+                    if (anotherSelection.equalsIgnoreCase("Y")) {
 
-                    try {
-                        anotherSelection = input.next();
-                    } catch (Exception e) {
-                        System.out.println("Invalid input, please enter Y/N.");
-                        input.next(); // discard the invalid input
+                        try {
+                            anotherSelection = input.nextLine();
+                        } catch (Exception e) {
+                            System.out.println("Invalid input, please enter a valid number.");
+                            input.nextLine(); // discard the invalid input
 
-                    }
+                        }
 
-                    System.out.println("Press 1 to check balance, 2 to make a deposit, 3 to withdraw money and 0 to exist the application");
-                    try {
-                        selection = input.nextInt();
-                    } catch (Exception e) {
-                        System.out.println("Invalid input, please enter a valid number.");
-                        input.nextLine(); // discard the invalid input
+                        System.out.println("Press 1 to check balance, 2 to make a deposit, 3 to withdraw money and 0 to exist the application");
+                        try {
+                            selection = input.nextInt();
+                        } catch (Exception e) {
+                            System.out.println("Invalid input, please enter a valid number.");
+                            input.nextLine(); // discard the invalid input
+
+                        }
 
                     }
 
